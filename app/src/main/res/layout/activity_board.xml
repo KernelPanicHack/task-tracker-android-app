@@ -11,10 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="120px"
         android:background="#E8D4F9"
+        android:foregroundGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/postId4"
+            android:layout_width="450px"
+            android:layout_height="75px"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/text_border"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Фильтрация"
+            android:inputType="text"
+            android:paddingStart="30px"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registrtxt" />
 
         <ImageView
             android:id="@+id/iv"
@@ -35,5 +56,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logowebpractik" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="85px"
+            android:layout_height="85px"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#E8D4F9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv"
+            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintStart_toEndOf="@+id/postId4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/filter" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
