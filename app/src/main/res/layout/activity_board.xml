@@ -86,7 +86,33 @@
             android:layout_height="match_parent"
             android:orientation="horizontal" >
 
-            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cord_0"
+
+                android:layout_width="800px"
+                android:layout_height="1400px"
+                android:background="@drawable/card_form"
+                android:layout_margin="50dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cord_1"
+                android:layout_width="800px"
+                android:layout_height="1400px"
+                android:background="@drawable/card_form"
+                android:layout_margin="50dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cord_2"
+                android:layout_width="800px"
+                android:layout_height="1400px"
+                android:background="@drawable/card_form"
+                android:layout_margin="50dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </HorizontalScrollView>
 
