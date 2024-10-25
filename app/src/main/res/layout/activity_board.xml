@@ -38,16 +38,6 @@
             app:layout_constraintTop_toBottomOf="@+id/registrtxt" />
 
         <ImageView
-            android:id="@+id/iv"
-            android:layout_width="75px"
-            android:layout_height="75px"
-            android:layout_marginRight="23px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/group_13" />
-
-        <ImageView
             android:id="@+id/imageView2"
             android:layout_width="300px"
             android:layout_height="wrap_content"
@@ -64,10 +54,21 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="#E8D4F9"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv"
-            app:layout_constraintHorizontal_bias="0.033"
             app:layout_constraintStart_toEndOf="@+id/postId4"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/filter" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E6D3F7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/group_13" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
