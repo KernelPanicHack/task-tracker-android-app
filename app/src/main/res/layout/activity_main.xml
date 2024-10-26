@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/authtxt"
+            android:id="@+id/TextView"
             android:layout_width="113dp"
             android:layout_height="33dp"
             android:layout_marginTop="27dp"
@@ -80,7 +80,7 @@
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/authtxt" />
+            app:layout_constraintTop_toBottomOf="@+id/TextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

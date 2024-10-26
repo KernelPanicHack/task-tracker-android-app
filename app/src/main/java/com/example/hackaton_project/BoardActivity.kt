@@ -17,7 +17,6 @@ class BoardActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_board)
 
-        // Настройка системных отступов
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.boardid)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -36,17 +35,14 @@ class BoardActivity : AppCompatActivity() {
         popup.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
                 R.id.filter_by_date -> {
-                    // Логика фильтрации по дате создания
                     filterByDate()
                     true
                 }
                 R.id.filter_by_responsible -> {
-                    // Логика фильтрации по ответственному лицу
                     filterByResponsible()
                     true
                 }
                 R.id.filter_by_keywords -> {
-                    // Логика фильтрации по ключевым словам
                     filterByKeywords()
                     true
                 }
@@ -57,14 +53,11 @@ class BoardActivity : AppCompatActivity() {
     }
 
     private fun filterByDate() {
-        // Реализуйте логику фильтрации по дате создания
     }
 
     private fun filterByResponsible() {
-        // Реализуйте логику фильтрации по ответственному лицу
     }
 
     private fun filterByKeywords() {
-        // Реализуйте логику фильтрации по ключевым словам
     }
 }
