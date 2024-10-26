@@ -17,31 +17,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/postId4"
-            android:layout_width="450px"
-            android:layout_height="75px"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/text_border"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Фильтрация"
-            android:inputType="text"
-            android:paddingStart="30px"
-            android:textColor="@color/black"
-            android:textSize="32px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.554"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/registrtxt" />
-
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="300px"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30px"
+            android:layout_width="185dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="15px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,10 +31,10 @@
             android:id="@+id/imageButton"
             android:layout_width="85px"
             android:layout_height="85px"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="30px"
             android:backgroundTint="#E8D4F9"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/postId4"
+            app:layout_constraintEnd_toStartOf="@+id/ProfileId"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/filter" />
 
@@ -62,10 +42,10 @@
             android:id="@+id/ProfileId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20px"
             android:backgroundTint="#E6D3F7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/group_13" />
 
@@ -84,15 +64,15 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cord_0"
 
-                android:layout_width="800px"
-                android:layout_height="1400px"
-                android:background="@drawable/card_form"
-                android:layout_margin="50dp">
+                android:layout_width="700px"
+                android:layout_height="1000px"
+                android:layout_margin="40dp"
+                android:background="@drawable/card_form">
 
                 <TextView
                     android:id="@+id/textView"
@@ -103,182 +83,28 @@
                     android:textColorLink="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.447"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
-                    android:layout_width="600px"
-                    android:layout_height="400px"
-                    android:background="@drawable/card_task"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.139">
-
-                    <Button
-                        android:id="@+id/button_name_task_0"
-                        android:layout_width="135dp"
-                        android:layout_height="37dp"
-                        android:background=""
-                        android:text="Название задачи"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.492"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton6"
-                        android:layout_width="44dp"
-                        android:layout_height="34dp"
-                        android:backgroundTint="#00FFFFFF"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button_name_task_0"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.025"
-                        app:srcCompat="@drawable/group_16" />
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="148dp"
-                        android:layout_height="65dp"
-                        android:textSize="8sp"
-                        android:text="Немного текста. Абдул джан "
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.493"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/button_name_task_0"
-                        app:layout_constraintVertical_bias="0.14" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Максим"
-                        android:textSize="8sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
-                        app:layout_constraintVertical_bias="0.844" />
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="20dp"
-                        android:layout_height="23dp"
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:srcCompat="@drawable/group_13"
-                        tools:layout_editor_absoluteX="56dp" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
-                    android:layout_width="600px"
-                    android:layout_height="400px"
-                    android:background="@drawable/card_task"
-                    tools:layout_editor_absoluteX="36dp"
-                    tools:layout_editor_absoluteY="246dp">
-
-                    <Button
-                        android:id="@+id/button_name_task_0"
-                        android:layout_width="135dp"
-                        android:layout_height="37dp"
-                        android:background=""
-                        android:text="Название задачи"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.492"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton6"
-                        android:layout_width="44dp"
-                        android:layout_height="34dp"
-                        android:backgroundTint="#00FFFFFF"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button_name_task_0"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.025"
-                        app:srcCompat="@drawable/group_16" />
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="148dp"
-                        android:layout_height="65dp"
-                        android:text="Немного текста. Абдул джан "
-                        android:textSize="8sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.493"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/button_name_task_0"
-                        app:layout_constraintVertical_bias="0.14" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Максим"
-                        android:textSize="8sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
-                        app:layout_constraintVertical_bias="0.844" />
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="20dp"
-                        android:layout_height="23dp"
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:srcCompat="@drawable/group_13"
-                        tools:layout_editor_absoluteX="56dp" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Button"
-                    tools:layout_editor_absoluteX="98dp"
-                    tools:layout_editor_absoluteY="474dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cord_1"
-                android:layout_width="800px"
-                android:layout_height="1400px"
-                android:background="@drawable/card_form"
-                android:layout_margin="50dp">
+                android:layout_width="700px"
+                android:layout_height="1000px"
+                android:layout_margin="40dp"
+                android:background="@drawable/card_form">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cord_2"
-                android:layout_width="800px"
-                android:layout_height="1400px"
-                android:background="@drawable/card_form"
-                android:layout_margin="50dp">
+                android:layout_width="700px"
+                android:layout_height="1000px"
+                android:layout_margin="40dp"
+                android:background="@drawable/card_form">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
