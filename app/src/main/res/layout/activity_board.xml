@@ -44,9 +44,10 @@
             android:backgroundTint="#E8D4F9"
             app:layout_constraintBottom_toBottomOf="@+id/searchtxt2"
             app:layout_constraintEnd_toStartOf="@+id/Profile"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/searchtxt2"
             app:layout_constraintTop_toTopOf="@+id/searchtxt2"
-            app:layout_constraintVertical_bias="0.6"
+            app:layout_constraintVertical_bias="0.65"
             app:srcCompat="@drawable/filter" />
 
         <ImageButton
