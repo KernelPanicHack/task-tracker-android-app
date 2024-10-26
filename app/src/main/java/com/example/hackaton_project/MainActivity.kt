@@ -29,8 +29,14 @@ class MainActivity : AppCompatActivity() {
 
         val but: Button = findViewById(R.id.button)
         but.setOnClickListener {
-            getTasks()
+            val intent = Intent(this,BoardActivity::class.java)
         }
+
+        val but2: Button = findViewById(R.id.buttonIf)
+        but.setOnClickListener {
+            val intent = Intent(this,RegistrActivity::class.java)
+        }
+
     }
 
     private fun getTasks() {
