@@ -23,5 +23,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrActivity::class.java)
             startActivity(intent)
         }
+        val but2: Button =(findViewById(R.id.button))
+        but.setOnClickListener{
+            val intent = Intent(this, BoardActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
