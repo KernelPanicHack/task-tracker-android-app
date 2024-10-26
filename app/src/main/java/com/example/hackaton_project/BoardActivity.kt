@@ -47,6 +47,9 @@ class BoardActivity : AppCompatActivity() {
                     // Обработка нажатия на пункт "Logout"
                     true
                 }
+                R.id.app_bar_search -> {
+                    true
+                }
                 else -> false
             }
         }
