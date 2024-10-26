@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val loginButton: Button = findViewById(R.id.button)
+        val loginButton: Button = findViewById(R.id.registrButton)
         loginButton.setOnClickListener {
             val email = findViewById<EditText>(R.id.logintxt).text.toString()
             val password = findViewById<EditText>(R.id.password).text.toString()

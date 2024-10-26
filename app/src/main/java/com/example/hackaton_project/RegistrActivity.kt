@@ -3,6 +3,7 @@ package com.example.hackaton_project
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,11 +18,8 @@ class RegistrActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+
         }
-        val but2: Button =(findViewById(R.id.button))
-        but2.setOnClickListener{
-            val intent = Intent(this, BoardActivity::class.java)
-            startActivity(intent)
         }
+
     }
-}
