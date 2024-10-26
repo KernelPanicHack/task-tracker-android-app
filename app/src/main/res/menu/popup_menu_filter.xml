@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/menu/popup_menu.xml -->
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_settings"
-        android:title="filter" />
+        android:id="@+id/filter_by_date"
+        android:title="Фильтр по дате создания" />
     <item
-        android:id="@+id/app_bar_search"
-        android:title="Search"
-        app:actionViewClass="android.widget.SearchView" />
+        android:id="@+id/filter_by_responsible"
+        android:title="Фильтр по ответственному лицу" />
+    <item
+        android:id="@+id/filter_by_keywords"
+        android:title="Фильтр по ключевым словам" />
 </menu>

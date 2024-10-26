@@ -24,7 +24,7 @@ class BoardActivity : AppCompatActivity() {
             insets
         }
 
-        val profileBut: ImageButton = findViewById(R.id.ProfileId)
+        val profileBut: ImageButton = findViewById(R.id.Profile)
         profileBut.setOnClickListener { showPopupMenu(it) }
     }
 
@@ -35,25 +35,36 @@ class BoardActivity : AppCompatActivity() {
 
         popup.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
-                R.id.action_settings -> {
-                    // Обработка нажатия на пункт "Settings"
+                R.id.filter_by_date -> {
+                    // Логика фильтрации по дате создания
+                    filterByDate()
                     true
                 }
-                R.id.action_profile -> {
-                    // Обработка нажатия на пункт "Profile"
+                R.id.filter_by_responsible -> {
+                    // Логика фильтрации по ответственному лицу
+                    filterByResponsible()
                     true
                 }
-                R.id.action_logout -> {
-                    // Обработка нажатия на пункт "Logout"
-                    true
-                }
-                R.id.app_bar_search -> {
+                R.id.filter_by_keywords -> {
+                    // Логика фильтрации по ключевым словам
+                    filterByKeywords()
                     true
                 }
                 else -> false
             }
         }
-
         popup.show()
+    }
+
+    private fun filterByDate() {
+        // Реализуйте логику фильтрации по дате создания
+    }
+
+    private fun filterByResponsible() {
+        // Реализуйте логику фильтрации по ответственному лицу
+    }
+
+    private fun filterByKeywords() {
+        // Реализуйте логику фильтрации по ключевым словам
     }
 }
