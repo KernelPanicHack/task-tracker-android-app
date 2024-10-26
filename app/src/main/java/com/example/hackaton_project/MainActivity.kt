@@ -1,5 +1,6 @@
 package com.example.hackaton_project
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,35 +17,55 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
     private val client = OkHttpClient()
+    private var authToken: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        authToken = sharedPreferences.getString("authToken", null)
+
+        if (authToken != null) {
+            navigateToBoardActivity(authToken!!)
+            return
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val but: Button = findViewById(R.id.button)
-        but.setOnClickListener {
-            val intent = Intent(this,BoardActivity::class.java)
+        val loginButton: Button = findViewById(R.id.button)
+        loginButton.setOnClickListener {
+            val email = findViewById<EditText>(R.id.logintxt).text.toString()
+            val password = findViewById<EditText>(R.id.password).text.toString()
+            login(email, password)
         }
 
-        val but2: Button = findViewById(R.id.buttonIf)
-        but.setOnClickListener {
-            val intent = Intent(this,RegistrActivity::class.java)
+        val registerButton: Button = findViewById(R.id.buttonIf)
+        registerButton.setOnClickListener {
+            val intent = Intent(this, RegistrActivity::class.java)
+            startActivity(intent)
         }
-
     }
 
-    private fun getTasks() {
-        val url = "https://356d-188-162-172-157.ngrok-free.app/api/tasks"
+    private fun login(email: String, password: String) {
+        val url = "https://356d-188-162-172-157.ngrok-free.app/api/login"
+        val json = JSONObject().apply {
+            put("email", email)
+            put("password", password)
+        }
+        val requestBody = RequestBody.create(
+            "application/json; charset=utf-8".toMediaTypeOrNull(),
+            json.toString()
+        )
 
         val request = Request.Builder()
             .url(url)
-            .get()
+            .post(requestBody)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -55,13 +76,45 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val responseData = response.body?.string()
-                    println("Ответ от сервера: $responseData")
+                val responseData = response.body?.string()
+                println("Ответ от сервера: $responseData")
+
+                if (response.isSuccessful && responseData != null) {
+                    val jsonResponse = JSONObject(responseData)
+                    authToken = jsonResponse.optString("token")
+
+                    if (!authToken.isNullOrEmpty()) {
+                        saveAuthToken(authToken!!)
+                        runOnUiThread {
+                            Toast.makeText(this@MainActivity, "Успешный вход", Toast.LENGTH_SHORT).show()
+                            navigateToBoardActivity(authToken!!)
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this@MainActivity, "Ошибка входа: Неверные данные", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 } else {
-                    println("Ошибка сервера: ${response.code}")
+                    runOnUiThread {
+                        Toast.makeText(this@MainActivity, "Ошибка входа: Неверные данные", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         })
+    }
+
+    private fun saveAuthToken(token: String) {
+        val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("authToken", token)
+            apply()
+        }
+    }
+
+    private fun navigateToBoardActivity(token: String) {
+        val intent = Intent(this@MainActivity, BoardActivity::class.java)
+        intent.putExtra("TOKEN", token)
+        startActivity(intent)
+        finish()
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,12 +90,15 @@
         android:layout_width="271dp"
         android:layout_height="84dp"
         android:layout_marginTop="15dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#FCF5FD"
         android:text="Если нет аккаунта, Зарегистрироваться"
         android:textColor="@color/black"
         android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/MainLayout"
+        app:layout_constraintVertical_bias="0.102" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
