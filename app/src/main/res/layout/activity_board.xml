@@ -99,7 +99,7 @@
                 android:id="@+id/MainWord2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="В процессе"
+                android:text="Беклог"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -134,11 +134,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/addTask1">
 
                 <LinearLayout
-                    android:id="@+id/taskList1"
+                    android:id="@+id/taskListPending"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-2dp"
-                    android:orientation="vertical" />
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="16dp"/> />
             </ScrollView>
 
             <View
@@ -166,7 +167,7 @@
                 android:id="@+id/MainWord1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Беклог"
+                android:text="В процессе"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -202,11 +203,12 @@
                 app:layout_constraintVertical_bias="0.159">
 
                 <LinearLayout
-                    android:id="@+id/taskList"
+                    android:id="@+id/taskListInProgress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-2dp"
-                    android:orientation="vertical" />
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="16dp"/>
             </ScrollView>
 
             <View
@@ -234,7 +236,7 @@
                 android:id="@+id/MainWord3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="В процессе"
+                android:text="Выполнено"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -269,11 +271,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/addTask2">
 
                 <LinearLayout
-                    android:id="@+id/taskList2"
+                    android:id="@+id/taskListCompleted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-2dp"
-                    android:orientation="vertical" />
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_marginTop="16dp"/>
             </ScrollView>
 
             <View
