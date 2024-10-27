@@ -33,8 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TextView" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/HeaderButton"
@@ -90,9 +89,76 @@
         android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cord_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@drawable/card_form">
+
+            <TextView
+                android:id="@+id/MainWord2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="В процессе"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.widget.Button
+                android:id="@+id/addTask1"
+                android:layout_width="250dp"
+                android:layout_height="28dp"
+
+                android:layout_marginTop="32dp"
+                android:background="@drawable/card_task"
+                android:backgroundTint="#FFFFFF"
+                android:text="+ Добавить задачу"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MainWord2" />
+
+            <ScrollView
+                android:id="@+id/scrollView21"
+                android:layout_width="302dp"
+                android:layout_height="400dp"
+                android:layout_marginBottom="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addTask1">
+
+                <LinearLayout
+                    android:id="@+id/taskList1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:orientation="vertical" />
+            </ScrollView>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="250dp"
+                android:layout_height="2dp"
+                android:background="@color/black"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/addTask1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MainWord2"
+                app:layout_constraintVertical_bias="0.295" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cord_0"
-            android:layout_width="300dp"
-            android:layout_height="500dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:background="@drawable/card_form">
 
@@ -126,173 +192,21 @@
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="302dp"
-                android:layout_height="355dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/MainWord1"
-                app:layout_constraintVertical_bias="0.948">
+                app:layout_constraintTop_toBottomOf="@+id/addTask"
+                app:layout_constraintVertical_bias="0.159">
 
                 <LinearLayout
+                    android:id="@+id/taskList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-30dp"
-                    android:orientation="vertical">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="250dp"
-                        android:layout_height="220dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:background="#FFFFFF">
-
-                        <TextView
-                            android:id="@+id/textView1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Исполнитель"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imageView1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.196"
-                            app:layout_constraintStart_toEndOf="@+id/textView1"
-                            app:srcCompat="@drawable/group_13" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="28dp"
-                            android:layout_marginTop="16dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/group_16" />
-
-                        <EditText
-                            android:id="@+id/text1"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="28dp"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="Name"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/imageButton1"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="250dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:background="#E9E9E9">
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Исполнитель"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.164"
-                            app:layout_constraintStart_toEndOf="@+id/textView2"
-                            app:srcCompat="@drawable/group_13" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="28dp"
-                            android:layout_marginTop="16dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/group_16" />
-
-                        <EditText
-                            android:id="@+id/text2"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="28dp"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="Name"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/imageButton2"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="250dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:background="#E9E9E9">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Исполнитель"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.164"
-                            app:layout_constraintStart_toEndOf="@+id/textView3"
-                            app:srcCompat="@drawable/group_13" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="28dp"
-                            android:layout_marginTop="16dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/group_16" />
-
-                        <EditText
-                            android:id="@+id/text3"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="28dp"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="Name"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/imageButton3"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                    android:layout_marginTop="-2dp"
+                    android:orientation="vertical" />
             </ScrollView>
 
             <View
@@ -310,18 +224,71 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-android:id="@+id/cord_1"
-android:layout_width="300dp"
-android:layout_height="400dp"
-android:layout_margin="16dp"
-android:background="@drawable/card_form" />
+            android:id="@+id/cord_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@drawable/card_form">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-android:id="@+id/cord_2"
-android:layout_width="300dp"
-android:layout_height="400dp"
-android:layout_margin="16dp"
-android:background="@drawable/card_form" />
+            <TextView
+                android:id="@+id/MainWord3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="В процессе"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.widget.Button
+                android:id="@+id/addTask2"
+                android:layout_width="250dp"
+                android:layout_height="28dp"
+
+                android:layout_marginTop="32dp"
+                android:background="@drawable/card_task"
+                android:backgroundTint="#FFFFFF"
+                android:text="+ Добавить задачу"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MainWord3" />
+
+            <ScrollView
+                android:id="@+id/scrollView3"
+                android:layout_width="302dp"
+                android:layout_height="400dp"
+                android:layout_marginBottom="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addTask2">
+
+                <LinearLayout
+                    android:id="@+id/taskList2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:orientation="vertical" />
+            </ScrollView>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="250dp"
+                android:layout_height="2dp"
+                android:background="@color/black"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/addTask2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MainWord3"
+                app:layout_constraintVertical_bias="0.295" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
     </HorizontalScrollView>
