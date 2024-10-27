@@ -51,6 +51,29 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    private fun sendTasksToConsole() {
+        val url = "https://356d-188-162-172-157.ngrok-free.app/api/tasks"
+
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer $authToken")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Ошибка отправки задачи: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseData = response.body?.string()
+                if (response.isSuccessful && responseData != null) {
+                    println("Задачи: $responseData")
+                } else {
+                    println("Ошибка запроса: ${response.message}")
+                }
+            }
+        })
+    }
 
     private fun login(email: String, password: String) {
         val url = "https://356d-188-162-172-157.ngrok-free.app/api/login"

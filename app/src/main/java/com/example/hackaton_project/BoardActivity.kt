@@ -10,50 +10,70 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import okhttp3.*
+import org.json.JSONObject
+import java.io.IOException
 
 class BoardActivity : AppCompatActivity() {
+
+    private val client = OkHttpClient()
+    private var authToken: String? = null
+    private var userId: String? = null
+
+    // Объявляем переменные для профиля как свойства класса
+    private var fullName: String = ""
+    private var position: String = ""
+    private var registrationDate: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board)
 
+        authToken = intent.getStringExtra("TOKEN")
+        userId = intent.getStringExtra("USER_ID")
+
+        // Загружаем профиль пользователя по userId
+        userId?.let { fetchUserProfile(it) }
+
         val profileButton: ImageButton = findViewById(R.id.Profile)
         profileButton.setOnClickListener {
             showProfilePopup()
         }
-        val taskList1: LinearLayout = findViewById(R.id.taskList)
-        val addTaskButton1: Button = findViewById(R.id.addTask)
-
-        val taskList2: LinearLayout = findViewById(R.id.taskList1)
-        val addTaskButton2: Button = findViewById(R.id.addTask1)
-
-        val taskList3: LinearLayout = findViewById(R.id.taskList2)
-        val addTaskButton3: Button = findViewById(R.id.addTask2)
-
-        addTaskButton1.setOnClickListener {
-            addNewTask(taskList1)
-        }
-        addTaskButton2.setOnClickListener {
-            addNewTask(taskList2)
-        }
-
-        addTaskButton3.setOnClickListener {
-            addNewTask(taskList3)
-        }
     }
 
-    private fun addNewTask(taskList: LinearLayout) {
-        val taskCard = LayoutInflater.from(this).inflate(R.layout.task_card, taskList, false)
+    private fun fetchUserProfile(userId: String) {
+        val url = "https://356d-188-162-172-157.ngrok-free.app/api/users/$userId" // URL для запроса
 
-        val taskTitle: TextView = taskCard.findViewById(R.id.taskTitle)
-        val taskDescription: TextView = taskCard.findViewById(R.id.taskDescription)
-        val taskAssignee: TextView = taskCard.findViewById(R.id.taskAssignee)
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer $authToken")
+            .build()
 
-        taskTitle.text = "Новая задача"
-        taskDescription.text = "Описание новой задачи"
-        taskAssignee.text = "Исполнитель: Иван Иванов"
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+            }
 
-        taskList.addView(taskCard)
+            override fun onResponse(call: Call, response: Response) {
+                val responseData = response.body?.string()
+                if (response.isSuccessful && responseData != null) {
+                    val jsonResponse = JSONObject(responseData)
+
+                    // Получаем данные профиля
+                    fullName = "${jsonResponse.optString("surname", "")} " +
+                            "${jsonResponse.optString("name", "")} " +
+                            "${jsonResponse.optString("patronymic", "")}"
+                    position = jsonResponse.optString("specialization", "Не указано")
+                    registrationDate = jsonResponse.optString("created_at", "Не указана")
+
+                    // Обновляем UI
+                    runOnUiThread {
+                        showProfilePopup() // Вызов без параметров
+                    }
+                } else {
+                    // Обработка неудачного запроса
+                }
+            }
+        })
     }
 
     private fun showProfilePopup() {
@@ -64,11 +84,11 @@ class BoardActivity : AppCompatActivity() {
         val profileRegistrationDate = dialogView.findViewById<TextView>(R.id.profileRegistrationDate)
         val logoutButton = dialogView.findViewById<Button>(R.id.button)
 
-        profileName.text = "Дмитрий Пиэйчпи Бэкендович"
-        profilePosition.text = "Должность: Backend"
-        profileRegistrationDate.text = "Дата регистрации: 20.11.23"
+        // Устанавливаем данные профиля
+        profileName.text = fullName
+        profilePosition.text = "Должность: $position"
+        profileRegistrationDate.text = "Дата регистрации: $registrationDate"
 
-        // Обработчик кнопки выхода
         logoutButton.setOnClickListener {
             logout()
         }
@@ -82,14 +102,12 @@ class BoardActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        // Удаление токена из SharedPreferences
         val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
             remove("authToken")
             apply()
         }
 
-        // Переход на страницу авторизации
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
