@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,10 +40,10 @@ class BoardActivity : AppCompatActivity() {
             showProfilePopup()
         }
 
+        loadTasksFromPreferences()
         fetchTasks()
     }
 
-    // Перечисление для статусов задач
     enum class TaskStatus(val status: String) {
         PENDING("В ожидании"),
         IN_PROGRESS("В процессе"),
@@ -59,7 +61,7 @@ class BoardActivity : AppCompatActivity() {
     }
 
     private fun fetchTasks() {
-        val url = "https://356d-188-162-172-157.ngrok-free.app/api/tasks"
+        val url = "https://6fd4-188-162-141-162.ngrok-free.app/api/tasks"
 
         val request = Request.Builder()
             .url(url)
@@ -69,24 +71,48 @@ class BoardActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 handleError("Ошибка загрузки задач")
+                loadTasksFromPreferences()
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val responseData = response.body?.string()
                 if (response.isSuccessful && responseData != null) {
                     val tasksArray = JSONArray(responseData)
+                    saveTasksToPreferences(tasksArray)
                     runOnUiThread {
                         populateTaskLists(tasksArray)
                     }
                 } else {
                     handleError("Ошибка загрузки задач")
+                    loadTasksFromPreferences()
                 }
             }
         })
     }
 
+    private fun saveTasksToPreferences(tasksArray: JSONArray) {
+        val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("saved_tasks", tasksArray.toString())
+            apply()
+        }
+    }
+
+    private fun loadTasksFromPreferences() {
+        val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val tasksJson = sharedPreferences.getString("saved_tasks", null)
+
+        if (tasksJson != null) {
+            val tasksArray = JSONArray(tasksJson)
+            runOnUiThread {
+                populateTaskLists(tasksArray)
+            }
+        } else {
+            handleError("Нет сохраненных данных задач")
+        }
+    }
+
     private fun populateTaskLists(tasksArray: JSONArray) {
-        // Очистка всех списков перед заполнением
         taskListPending.removeAllViews()
         taskListInProgress.removeAllViews()
         taskListCompleted.removeAllViews()
@@ -98,16 +124,13 @@ class BoardActivity : AppCompatActivity() {
         for (i in 0 until tasksArray.length()) {
             val taskObject = tasksArray.getJSONObject(i)
 
-            // Пропуск задач пользователя с ID 4
             val userId = taskObject.optInt("user_id", -1)
             if (userId == 4) continue
 
-            // Определяем статус задачи
             val taskStateObject = taskObject.optJSONObject("tasks_state")
             val status = TaskStatus.from(taskStateObject?.optString("name"))
             println("Статус задачи: ${status.status}") // Лог для проверки статуса
 
-            // Заполнение списков задач
             when (status) {
                 TaskStatus.PENDING -> if (pendingCount < 3) {
                     addTaskCard(taskObject, taskListPending)
@@ -132,15 +155,12 @@ class BoardActivity : AppCompatActivity() {
         val taskDescription: TextView = taskCard.findViewById(R.id.taskDescription)
         val taskAssignee: TextView = taskCard.findViewById(R.id.taskAssignee)
 
-        // Устанавливаем данные задачи
         taskTitle.text = taskObject.optString("title", "Без названия")
         taskDescription.text = taskObject.optString("task_body", "Без описания")
 
-        // Получаем имя исполнителя задачи
         val assignee = taskObject.optJSONObject("users")?.optString("name") ?: "Не указан"
         taskAssignee.text = "Исполнитель: $assignee"
 
-        // Добавляем карточку в список задач
         taskListContainer.addView(taskCard)
     }
 
@@ -151,7 +171,23 @@ class BoardActivity : AppCompatActivity() {
     }
 
     private fun showProfilePopup() {
+        val profileButton: ImageButton = findViewById(R.id.Profile)
+        val popupMenu = PopupMenu(this, profileButton)
+        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.button -> {
+                    Toast.makeText(this, "Выход", Toast.LENGTH_SHORT).show()
+                    logout()
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.show()
     }
+
 
     private fun logout() {
         val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)

@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login(email: String, password: String) {
-        val url = "https://356d-188-162-172-157.ngrok-free.app/api/login"
+        val url = "https://6fd4-188-162-141-162.ngrok-free.app/api/login"
         val json = JSONObject().apply {
             put("email", email)
             put("password", password)
